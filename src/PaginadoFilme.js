@@ -30,7 +30,7 @@ console.log(idFilme)
             <p>Selecione o horário</p>
         {filme.map((f)=> <Sessao>
                 <Dia>{f.date} - {f.weekday}</Dia>
-               <ContainerHorarios> {f.showtimes.map((i)=><Horario><Link to= "/"><h1>{i.name}</h1></Link> </Horario>)}</ContainerHorarios>
+               <ContainerHorarios> {f.showtimes.map((i)=><Horario><Link to= {`/assentos/${i.id}`}><h1>{i.name}</h1></Link> </Horario>)}</ContainerHorarios>
             </Sessao>)}    
 
         <Footer>

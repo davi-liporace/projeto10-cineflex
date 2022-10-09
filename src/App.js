@@ -4,10 +4,17 @@ import styled from "styled-components"
 import PaginaInicial from "./Pagina.Inicial";
 import { useState } from "react";
 import PaginadoFilme from "./PaginadoFilme";
+import PaginadaSessao from "./PaginadaSessao";
+import Sucesso from "./Sucesso";
 
 
 
 export default function App() {
+    const [filmeFinal, setFilmeFinal]= useState("")
+    const [dataFinal, setDataFinal]= useState("")
+    const [horarioFinal, setHorarioFinal] = useState("")
+    const [inputname, setInputName] = useState("")
+    const [inputCpf, setInputCpf] = useState("")
     const [arrayFilmes, setArrayFilmes] = useState([])
     const [filme, setFilme] = useState([])
     return ( 
@@ -16,9 +23,8 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<PaginaInicial arrayFilmes = {arrayFilmes} setArrayFilmes = {setArrayFilmes}  />} />
                 <Route path="/sessoes/:id" element={<PaginadoFilme arrayFilmes = {arrayFilmes} setArrayFilmes = {setArrayFilmes} filme = {filme} setFilme = {setFilme} />} />
-               {/*  <Route path="/assentos/id" element={<PaginadaSessao />} />
-                <Route path="/sucesso" element={<Sucesso />} />
- */}
+               <Route path="/assentos/:id" element={<PaginadaSessao setFilmeFinal = {setFilmeFinal} filmeFinal = {filmeFinal} setDataFinal={setDataFinal} setHorarioFinal={setHorarioFinal} inputCpf = {inputCpf} setInputCpf = {setInputCpf} inputname = {inputname} setInputName = {setInputName} />} />
+               <Route path="/sucesso" element={<Sucesso inputname={inputname} inputCpf={inputCpf} filmeFinal={filmeFinal} dataFinal={dataFinal} horarioFinal={horarioFinal}  />} /> 
 
             </Routes> 
 
