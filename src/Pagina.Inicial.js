@@ -48,10 +48,14 @@ p{
 `
 
 const ImagemFilme = styled.div`
-background-color: grey;
+
 width: 145px;
 height: 209px;
 margin-top: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
 img{
     width: 129px;
     height: 193px;

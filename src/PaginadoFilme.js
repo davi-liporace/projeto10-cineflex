@@ -30,11 +30,11 @@ console.log(idFilme)
             <p>Selecione o horário</p>
         {filme.map((f)=> <Sessao>
                 <Dia>{f.date} - {f.weekday}</Dia>
-                {f.showtimes.map((i)=><Horario><Link to= "/">{i.name}</Link> </Horario>)}
+               <ContainerHorarios> {f.showtimes.map((i)=><Horario><Link to= "/"><h1>{i.name}</h1></Link> </Horario>)}</ContainerHorarios>
             </Sessao>)}    
 
         <Footer>
-            <ImgFooter src={arrayFilmes[idFilme].posterURL} ></ImgFooter>
+           <ContainerImg> <ImgFooter src={arrayFilmes[idFilme].posterURL} ></ImgFooter></ContainerImg>
             <TituloFooter>{arrayFilmes[idFilme].title}</TituloFooter>
         </Footer>
 
@@ -49,24 +49,76 @@ console.log(idFilme)
 
 
 
-const Sessao = styled.div``
-const Dia = styled.div``
-const Horario = styled.button``
+const Sessao = styled.div`
+display: flex;
+justify-content: center;
+margin-bottom: 20px;
+flex-direction: column;
+`
+const ContainerHorarios = styled.div`
+display: flex;
+margin-top: 20px;
+justify-content: center;
+`
+
+const Dia = styled.div`
+font-family: 'Roboto';
+font-style: normal;
+font-size: 20px;
+`
+
+
+const Horario = styled.button`
+width: 83px;
+height: 43px;
+background-color: #E8833A;
+border-radius: 3px;
+font-family: 'Roboto';
+font-size: 18px;
+color: white;
+margin-right: 10px;
+overflow-y: scroll;
+h1{
+color: white;
+}
+`
 
 
 const Footer = styled.div`
 display: flex;
 position: fixed;
+align-items: center;
 bottom: 0%;
 height: 117px;
 width:100%;
-background-color:grey`
+justify-content: flex-start;
+background-color:#DFE6ED;
+box-sizing: border-box;
+padding: 10px 14px;
+`
+
+const ContainerImg = styled.div`
+width: 64px;
+height: 89px;
+background-color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-right: 15px;
+`
 
 const ImgFooter = styled.img`
 width: 48px;
 height: 72px;`
 
-const TituloFooter = styled.div``
+const TituloFooter = styled.div`
+color: #293845;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 26px;
+line-height: 30px;
+`
 
 const ContainerPagina = styled.div`
 margin-top: 100px;
@@ -77,5 +129,6 @@ p{
     font-family: 'Roboto';
     font-size: 24px;
     color: #293845;
+    margin-bottom: 14px;
 }
 `
