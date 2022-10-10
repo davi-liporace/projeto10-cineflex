@@ -1,13 +1,15 @@
 import styled from "styled-components"
 import { useState, useEffect } from "react"
 import axios from "axios"
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useNavigate } from "react-router-dom"
+import Assentos from "./Assentos"
 
 
 export default function PaginadaSessao(props){
-    const {setInputName, setInputCpf, setFilmeFinal, setDataFinal, setHorarioFinal} = props
+    const navigate = useNavigate()
+    const {setInputName, setInputCpf, setFilmeFinal, setDataFinal, setHorarioFinal,inputname,inputCpf,assentoFinal,setAssentoFinal} = props
 const [arrayAssentos, setArrayAssentos] = useState({seats:[], day:[{weekday:[],date:[]}],movie:[{title:[], posterURL:[]}],name:[] })
-const [informacoesSessao, setInformacoesSessao] = useState([])
+const [assentosSelecionados, setAssentosSelecionados] = useState([])
 const {id} = useParams()
 
 useEffect(() =>{
@@ -18,10 +20,15 @@ promise.catch(erro => console.log(erro.status))
 )
 
 
-
+function processaPromessa(){
+   const envio= ({ids:assentosSelecionados,name:inputname,cpf:inputCpf})
+    const promessa = axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many",envio)
+    promessa.then(console.log(envio))
+    promessa.catch((erro) => console.log(erro))
+}
 
 function setInformacoesFilme(){
-    const {setInputName, setInputCpf, setFilmeFinal, setDataFinal, setHorarioFinal,filmeFinal} = props
+    const {setFilmeFinal, setDataFinal, setHorarioFinal,filmeFinal} = props
 setFilmeFinal(arrayAssentos.movie.title)
 setDataFinal(arrayAssentos.day.date)
 setHorarioFinal(arrayAssentos.name)
@@ -34,7 +41,7 @@ return (
 <ContainerPagina>
     <p>Selecione o(s) assento(s)</p>
     <ContainerAssentos>
-        <ListaAssentos>{arrayAssentos.seats.map((a) =><Assentos>{a.name}</Assentos>  )} </ListaAssentos>
+        <ListaAssentos>{arrayAssentos.seats.map((a) =><Assentos assentoFinal={assentoFinal} setAssentoFinal={setAssentoFinal} id={a.id} name={a.name} isAvailable={a.isAvailable} assentosSelecionados={assentosSelecionados} setAssentosSelecionados={setAssentosSelecionados} />  )} </ListaAssentos>
         <LegendaAssentos>
             <AssentoVerde></AssentoVerde><h1>Selecionado</h1><br/>
             <AssentoCinza></AssentoCinza><h1>Disponível</h1><br></br>
@@ -48,10 +55,10 @@ return (
         <h1>CPF do Comprador</h1>
         <input placeholder="Digite seu CPF" onChange={(e) => setInputCpf(e.target.value)} />
     </ListaComprador>
-    <Link to ="/sucesso"> <BotaoReserva><h1>Reservar Assento</h1></BotaoReserva></Link>
+    <Link to ="/sucesso"> <BotaoReserva onClick={processaPromessa}><h1>Reservar Assento</h1></BotaoReserva></Link>
     <Footer>
            <ContainerImg> <ImgFooter src={arrayAssentos.movie.posterURL} ></ImgFooter></ContainerImg>
-            <TituloFooter>{arrayAssentos.movie.title}</TituloFooter>
+            <TituloFooter>{arrayAssentos.movie.title} </TituloFooter>
             <TituloFooter>{arrayAssentos.day.weekday} - {arrayAssentos.day.date}</TituloFooter>
         </Footer>
     
@@ -62,15 +69,9 @@ return (
 
 
 
-const Assentos = styled.button`
-width: 26px;
-height: 26px;
-background-color: #C3CFD9;
-border: 1px solid #808F9D;
-border-radius: 12px;
-margin-right: 5px;
-margin-top: 5px;
-`
+
+
+
 
 const AssentoVerde = styled.div`
 width: 15px;

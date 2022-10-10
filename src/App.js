@@ -17,14 +17,15 @@ export default function App() {
     const [inputCpf, setInputCpf] = useState("")
     const [arrayFilmes, setArrayFilmes] = useState([])
     const [filme, setFilme] = useState([])
+    const [assentoFinal, setAssentoFinal] = useState([])
     return ( 
         <BrowserRouter> <GlobalStyles />
             <Header><p>Cineflex</p></Header>
             <Routes>
                 <Route path="/" element={<PaginaInicial arrayFilmes = {arrayFilmes} setArrayFilmes = {setArrayFilmes}  />} />
                 <Route path="/sessoes/:id" element={<PaginadoFilme arrayFilmes = {arrayFilmes} setArrayFilmes = {setArrayFilmes} filme = {filme} setFilme = {setFilme} />} />
-               <Route path="/assentos/:id" element={<PaginadaSessao setFilmeFinal = {setFilmeFinal} filmeFinal = {filmeFinal} setDataFinal={setDataFinal} setHorarioFinal={setHorarioFinal} inputCpf = {inputCpf} setInputCpf = {setInputCpf} inputname = {inputname} setInputName = {setInputName} />} />
-               <Route path="/sucesso" element={<Sucesso inputname={inputname} inputCpf={inputCpf} filmeFinal={filmeFinal} dataFinal={dataFinal} horarioFinal={horarioFinal}  />} /> 
+               <Route path="/assentos/:id" element={<PaginadaSessao assentoFinal={assentoFinal} setAssentoFinal={setAssentoFinal} inputname={inputname} inputCpf={inputCpf}  setFilmeFinal = {setFilmeFinal} filmeFinal = {filmeFinal} setDataFinal={setDataFinal} setHorarioFinal={setHorarioFinal} setInputCpf = {setInputCpf}  setInputName = {setInputName} />} />
+               <Route path="/sucesso" element={<Sucesso setAssentoFinal={setAssentoFinal} assentoFinal={assentoFinal} inputname={inputname} inputCpf={inputCpf} filmeFinal={filmeFinal} dataFinal={dataFinal} horarioFinal={horarioFinal}  />} /> 
 
             </Routes> 
 

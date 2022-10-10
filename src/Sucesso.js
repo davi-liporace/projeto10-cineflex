@@ -2,20 +2,20 @@ import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 export default function Sucesso(props) {
-    const { inputname, inputCpf, filmeFinal, dataFinal, horarioFinal } = props
+    const { inputname, inputCpf, filmeFinal, dataFinal, horarioFinal, assentoFinal,setAssentoFinal} = props
 
 
     return (<ContainerPagina>
         <p>Pedido feito<br></br> com sucesso!</p>
         <h1>Filme e Sessão</h1>
-        <h2>{filmeFinal}</h2>
+        <h2>{filmeFinal}</h2>-
         <h2>{dataFinal} - {horarioFinal}</h2>
         <h1>Ingressos</h1>
-        <h2>Assento 15</h2><br></br>
+        {assentoFinal.map((a) => <h2>Assento {a}</h2>)}
         <h1>Comprador</h1>
         <h2>Nome: {inputname}</h2>
         <h2>CPF: {inputCpf}</h2>
-        <Link to="/"><BotaoHome>Voltar para a Home</BotaoHome></Link>
+        <Link to="/"><BotaoHome onClick={() => setAssentoFinal([])}>Voltar para a Home</BotaoHome></Link>
 
 
 
