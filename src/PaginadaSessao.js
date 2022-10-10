@@ -35,7 +35,11 @@ return (
     <p>Selecione o(s) assento(s)</p>
     <ContainerAssentos>
         <ListaAssentos>{arrayAssentos.seats.map((a) =><Assentos>{a.name}</Assentos>  )} </ListaAssentos>
-        <LegendaAssentos></LegendaAssentos>
+        <LegendaAssentos>
+            <AssentoVerde></AssentoVerde><h1>Selecionado</h1><br/>
+            <AssentoCinza></AssentoCinza><h1>Disponível</h1><br></br>
+            <AssentoAmarelo></AssentoAmarelo><h1>Indisponível</h1><br></br>
+        </LegendaAssentos>
     </ContainerAssentos>
     <ListaComprador>
         <h1>Nome do comprador</h1>
@@ -44,7 +48,7 @@ return (
         <h1>CPF do Comprador</h1>
         <input placeholder="Digite seu CPF" onChange={(e) => setInputCpf(e.target.value)} />
     </ListaComprador>
-    <Link to ="/sucesso"> <BotaoReserva>Reservar Assento</BotaoReserva></Link>
+    <Link to ="/sucesso"> <BotaoReserva><h1>Reservar Assento</h1></BotaoReserva></Link>
     <Footer>
            <ContainerImg> <ImgFooter src={arrayAssentos.movie.posterURL} ></ImgFooter></ContainerImg>
             <TituloFooter>{arrayAssentos.movie.title}</TituloFooter>
@@ -61,22 +65,97 @@ return (
 const Assentos = styled.button`
 width: 26px;
 height: 26px;
-background-color: grey;
-border: 1px solid black;
+background-color: #C3CFD9;
+border: 1px solid #808F9D;
 border-radius: 12px;
 margin-right: 5px;
 margin-top: 5px;
+`
+
+const AssentoVerde = styled.div`
+width: 15px;
+height: 15px;
+background-color: #1AAE9E;
+border: 1px solid #0E7D71;
+border-radius: 12px;
+margin-right: 5px;
+margin-top: 5px;
+`
+
+const AssentoCinza = styled.div`
+width: 15px;
+height: 15px;
+background-color: #C3CFD9;
+border: 1px solid #7B8B99;
+border-radius: 12px;
+margin-right: 5px;
+margin-top: 5px;`
+
+const AssentoAmarelo = styled.div`
+width: 15px;
+height: 15px;
+background-color: #FBE192;
+border: 1px solid #F7C52B;
+border-radius: 12px;
+margin-right: 5px;
+margin-top: 5px;`
+
+const ContainerAssentos = styled.div`
+box-sizing: border-box;
+padding-left: 20px;
+padding-right: 20px;
+margin-bottom: 40px;
 
 `
-const ContainerAssentos = styled.div``
 const ListaAssentos = styled.div`
 flex-wrap: wrap;
 display: flex;
 
 `
-const LegendaAssentos = styled.div``
-const ListaComprador = styled.div``
-const BotaoReserva = styled.div``
+const LegendaAssentos = styled.div`
+display: flex;
+margin-top: 20px;
+align-items: center;
+justify-content: flex-start;
+h1{
+    font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 15px;
+margin-right: 15px;
+color: #4E5A65;
+}
+`
+
+const ListaComprador = styled.div`
+h1{
+    font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 21px;
+}
+input{
+    width: 327px;
+height: 51px;
+border: 1px solid #D5D5D5;
+border-radius: 3px;
+}
+`
+
+const BotaoReserva = styled.button`
+width: 225px;
+height: 42px;
+background-color: #E8833A;
+border-radius: 3px;
+margin-top: 30px;
+h1{
+    font-family: 'Roboto';
+    font-size: 18px;
+    color: #FFFFFF;
+}
+`
 const Footer = styled.div`
 display: flex;
 position: fixed;

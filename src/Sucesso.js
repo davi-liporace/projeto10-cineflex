@@ -1,25 +1,25 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-export default function Sucesso(props){
-const {inputname, inputCpf, filmeFinal, dataFinal, horarioFinal} = props
+export default function Sucesso(props) {
+    const { inputname, inputCpf, filmeFinal, dataFinal, horarioFinal } = props
 
 
-return(<ContainerPagina>
-    <p>Pedido feito com sucesso!</p>
-    <h1>Filme e Sessão</h1>
-    <h2>{filmeFinal}</h2>
-    <h2>{dataFinal}{horarioFinal}</h2>
-    <h1>Ingressos</h1>
-    <h2>assento 15</h2>
-    <h1>Comprador</h1>
-    <h2>Nome: {inputname}</h2>
-    <h2>CPF: {inputCpf}</h2>
-<Link to = "/"><BotaoHome>Voltar para a Home</BotaoHome></Link>
-    
+    return (<ContainerPagina>
+        <p>Pedido feito<br></br> com sucesso!</p>
+        <h1>Filme e Sessão</h1>
+        <h2>{filmeFinal}</h2>
+        <h2>{dataFinal} - {horarioFinal}</h2>
+        <h1>Ingressos</h1>
+        <h2>Assento 15</h2><br></br>
+        <h1>Comprador</h1>
+        <h2>Nome: {inputname}</h2>
+        <h2>CPF: {inputCpf}</h2>
+        <Link to="/"><BotaoHome>Voltar para a Home</BotaoHome></Link>
 
 
-</ContainerPagina>)
+
+    </ContainerPagina>)
 
 
 
@@ -29,7 +29,10 @@ return(<ContainerPagina>
 
 const BotaoHome = styled.button`
 margin-top: 15px;
-
+width: 225px;
+height: 42px;
+background-color: #E8833A;
+border-radius: 3px;
 
 `
 const ContainerPagina = styled.div`
@@ -39,8 +42,29 @@ align-items: center;
 flex-direction: column;
 p{
     font-family: 'Roboto';
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
     font-size: 24px;
+    line-height: 28px;
     color: #247A6B;
     margin-bottom: 14px;
+}
+h1{
+    font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 28px;
+margin-bottom: 10px;
+margin-top: 10px;
+}
+h2{
+    font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 26px;
+margin-top: 5px;
 }
 `
