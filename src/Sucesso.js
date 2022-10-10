@@ -7,15 +7,15 @@ export default function Sucesso(props) {
 
     return (<ContainerPagina>
         <p>Pedido feito<br></br> com sucesso!</p>
-        <h1>Filme e Sessão</h1>
-        <h2>{filmeFinal}</h2>-
+        <h1 data-identifier="movie-session-infos-reserve-finished" >Filme e Sessão</h1>
+        <h2>{filmeFinal}</h2>
         <h2>{dataFinal} - {horarioFinal}</h2>
-        <h1>Ingressos</h1>
+        <h1 data-identifier="seat-infos-reserve-finished" >Ingressos</h1>
         {assentoFinal.map((a) => <h2>Assento {a}</h2>)}
         <h1>Comprador</h1>
-        <h2>Nome: {inputname}</h2>
+        <h2 data-identifier="buyer-infos-reserve-finished" >Nome: {inputname}</h2>
         <h2>CPF: {inputCpf}</h2>
-        <Link to="/"><BotaoHome onClick={() => setAssentoFinal([])}>Voltar para a Home</BotaoHome></Link>
+        <Link to="/"><BotaoHome data-identifier="back-to-home-btn" onClick={() => setAssentoFinal([])}>Voltar para a Home</BotaoHome></Link>
 
 
 

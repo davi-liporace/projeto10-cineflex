@@ -41,25 +41,25 @@ return (
 <ContainerPagina>
     <p>Selecione o(s) assento(s)</p>
     <ContainerAssentos>
-        <ListaAssentos>{arrayAssentos.seats.map((a) =><Assentos assentoFinal={assentoFinal} setAssentoFinal={setAssentoFinal} id={a.id} name={a.name} isAvailable={a.isAvailable} assentosSelecionados={assentosSelecionados} setAssentosSelecionados={setAssentosSelecionados} />  )} </ListaAssentos>
-        <LegendaAssentos>
-            <AssentoVerde></AssentoVerde><h1>Selecionado</h1><br/>
-            <AssentoCinza></AssentoCinza><h1>Disponível</h1><br></br>
-            <AssentoAmarelo></AssentoAmarelo><h1>Indisponível</h1><br></br>
+        <ListaAssentos>{arrayAssentos.seats.map((a) =><Assentos data-identifier="seat" assentoFinal={assentoFinal} setAssentoFinal={setAssentoFinal} id={a.id} name={a.name} isAvailable={a.isAvailable} assentosSelecionados={assentosSelecionados} setAssentosSelecionados={setAssentosSelecionados} />  )} </ListaAssentos>
+        <LegendaAssentos   >
+            <AssentoVerde data-identifier="seat-selected-subtitle"></AssentoVerde><h1>Selecionado</h1><br/>
+            <AssentoCinza data-identifier="seat-available-subtitle" ></AssentoCinza><h1>Disponível</h1><br></br>
+            <AssentoAmarelo data-identifier="seat-unavailable-subtitle" ></AssentoAmarelo><h1>Indisponível</h1><br></br>
         </LegendaAssentos>
     </ContainerAssentos>
     <ListaComprador>
         <h1>Nome do comprador</h1>
-        <input placeholder="Digite seu nome"
+        <input data-identifier="buyer-name-input" placeholder="Digite seu nome"
         onChange={(e) => setInputName(e.target.value)} />
         <h1>CPF do Comprador</h1>
-        <input placeholder="Digite seu CPF" onChange={(e) => setInputCpf(e.target.value)} />
+        <input data-identifier="buyer-cpf-input" placeholder="Digite seu CPF" onChange={(e) => setInputCpf(e.target.value)} />
     </ListaComprador>
-    <Link to ="/sucesso"> <BotaoReserva onClick={processaPromessa}><h1>Reservar Assento</h1></BotaoReserva></Link>
+    <Link to ="/sucesso"> <BotaoReserva data-identifier="reservation-btn" onClick={processaPromessa}><h1>Reservar Assento</h1></BotaoReserva></Link>
     <Footer>
            <ContainerImg> <ImgFooter src={arrayAssentos.movie.posterURL} ></ImgFooter></ContainerImg>
             <TituloFooter>{arrayAssentos.movie.title} </TituloFooter>
-            <TituloFooter>{arrayAssentos.day.weekday} - {arrayAssentos.day.date}</TituloFooter>
+            <TituloFooter data-identifier="movie-and-session-infos-preview">{arrayAssentos.day.weekday} - {arrayAssentos.day.date}</TituloFooter>
         </Footer>
     
     

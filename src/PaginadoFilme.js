@@ -29,12 +29,12 @@ console.log(idFilme)
         <ContainerPagina>
             <p>Selecione o horário</p>
         {filme.map((f)=> <Sessao>
-                <Dia>{f.date} - {f.weekday}</Dia>
-               <ContainerHorarios> {f.showtimes.map((i)=><Horario><Link to= {`/assentos/${i.id}`}><h1>{i.name}</h1></Link> </Horario>)}</ContainerHorarios>
+                <Dia data-identifier="session-date">{f.date} - {f.weekday}</Dia>
+               <ContainerHorarios> {f.showtimes.map((i)=><Horario data-identifier="hour-minute-btn"><Link to= {`/assentos/${i.id}`}><h1>{i.name}</h1></Link> </Horario>)}</ContainerHorarios>
             </Sessao>)}    
 
         <Footer>
-           <ContainerImg> <ImgFooter src={arrayFilmes[idFilme].posterURL} ></ImgFooter></ContainerImg>
+           <ContainerImg> <ImgFooter src={arrayFilmes[idFilme].posterURL} data-identifier="movie-img-preview" ></ImgFooter></ContainerImg>
             <TituloFooter>{arrayFilmes[idFilme].title}</TituloFooter>
         </Footer>
 

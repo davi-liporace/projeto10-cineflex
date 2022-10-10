@@ -24,7 +24,7 @@ export default function PaginaInicial(props) {
         <ContainerPagina>
             <p>Selecione o filme</p>
             <ContainerFilme>
-                {arrayFilmes.map((i) => <ImagemFilme>
+                {arrayFilmes.map((i) => <ImagemFilme data-identifier="movie-outdoor">
                     <Link to={`/sessoes/${i.id}`}>
                     <img src={i.posterURL} id={i.id} />
                     </Link>
